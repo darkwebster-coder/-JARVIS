@@ -62,7 +62,7 @@ def wishme():
     speak("I am Jarvis Sir. Please tell me how may I help you")
 
 def news():
-    main_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=caa40b87321146f5b4b3e022d2b965dd"
+    main_url = "https://newsapi.org/"
     main_page = requests.get(main_url).json()
     #print(main_page)
     articles = main_page["articles"]
@@ -171,7 +171,7 @@ class Mainthread(QThread):
 
                 elif 'open code' in self.query:
                     speak("Opening Visual Studio Code")                
-                    codepath = "C:\\Users\\OMEN\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+                    codepath = "Your vs code path"
                     os.startfile(codepath)
                 elif'close code' in self.query:
                     speak("Closing Visual Studio Code")
@@ -179,7 +179,7 @@ class Mainthread(QThread):
                 
                 elif 'open chrome' in self.query:
                     speak("Opening Google Chrome")
-                    chrome = "C:\\Users\\OMEN\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+                    chrome = "Your Chrome path"
                     os.startfile(chrome)
                 elif'close chrome' in self.query:
                     speak("Closing Google Chrome")
@@ -187,7 +187,7 @@ class Mainthread(QThread):
 
                 elif 'open notepad' in self.query:
                     speak("Opening Notepad")
-                    notepad = "C:\\windows\\system32\\notepad.exe"
+                    notepad = "Your Notepad path"
                     os.startfile(notepad)
                 elif'close notepad' in self.query:
                     speak("Closing Notepad")
@@ -197,16 +197,6 @@ class Mainthread(QThread):
                     speak("Opening Parade")
                     webbrowser.open("parade.com")
 
-            # elif'email to hacker' in query:
-                    #try:
-                        #speak("What should i say?")
-                        ##ontent = takeCommand().lower()
-                        ##to = "rakshitrakshit26@gmail.com"
-                        ##sendEmail(to, content)
-                        ##speak("Email has been sent!")
-                    ##except Exception as e:
-                        ##print(e)
-                    ##speak("Sorry my friend Rakshit. I am not able to send this email")
 
                 elif 'open camera' in self.query:
                     cap = cv2.VideoCapture(0)
@@ -220,7 +210,7 @@ class Mainthread(QThread):
                     cv2.destroyAllWindows()
 
                 elif'play song on youtube' in self.query:
-                    kit.playonyt("Akela Hoon")
+                    kit.playonyt("Song")
 
                 elif 'ip address' in self.query:
                     ip = get('https://api.ipify.org').text
@@ -234,7 +224,7 @@ class Mainthread(QThread):
                 elif 'open spotify' in self.query:
                     speak("Opening Spotify")
                     cm = self.takeCommand().lower()
-                    spotifypath = ("C:\\Users\\OMEN\\AppData\\Roaming\\Spotify\\Spotify.exe")
+                    spotifypath = ("Path of spotify")
                     os.startfile(spotifypath) 
                 elif'close spotify' in self.query:
                     speak("Closing Spotify")
@@ -271,19 +261,11 @@ class Mainthread(QThread):
 
                 elif'open experience' in self.query:
                     speak("Opening Experience")
-                    GeforcePath = "C:\\Program Files\\NVIDIA Corporation\\NVIDIA GeForce Experience\\NVIDIA GeForce Experience.exe"
+                    GeforcePath = "Path"
                     os.startfile(GeforcePath)
                 elif'close experience' in self.query:
                     speak("Closing Experience")
                     os.system("TASKKILL /F /IM NVIDIA GeForce Experience.exe")
-
-                elif'open site' in self.query:
-                    speak("Opening site")
-                    XMPath = "D:\\Xampp\\xampp-control.exe"
-                    os.startfile(XMPath)
-                elif'close site' in self.query:
-                    speak("Closing site")
-                    os.system("TASKKILL /F /IM xampp-control.exe")
 
                 elif'i am horney' in self.query:
                     speak("i am horny too")
@@ -293,7 +275,7 @@ class Mainthread(QThread):
                 
                 elif'open steam' in self.query:
                     speak("Opening Steam")
-                    Steampath = "D:\\Steam\\Steam.exe"
+                    Steampath = "Path"
                     os.startfile(Steampath)
                     speak("Sir, What game you want to Play?")
                 if 'game' in self.query:
@@ -306,14 +288,14 @@ class Mainthread(QThread):
 
                 elif'open discord' in self.query:
                     speak("Opening Discord")
-                    Discordpath = "C:\\Users\\OMEN\\AppData\\Local\\Discord\\app-1.0.9004\\Discord.exe"
+                    Discordpath = "Path"
                     os.startfile(Discordpath)
                 elif'close discord' in self.query:
                     speak("Closing Discord")
                     os.system("TASKKILL /F /IM Discord.exe")
 
                 elif'send message' in self.query:
-                    kit.sendwhatmsg("+918890724525", "Hello, How are you?",14,20)
+                    kit.sendwhatmsg("+91", "Hello, How are you?",14,20)
 
                 elif'switch the window' in self.query:
                     speak("Switching the window")
@@ -359,61 +341,7 @@ class Mainthread(QThread):
                     speak("Closing Instagram")
                     os.system("TASKKILL /F /IM chrome.exe")
 
-            #Email Code
-
-                elif'email to hacker' in self.query:
-                    speak("what should i say?")
-                    query = self.takeCommand().lower()
-                    if 'send a file' in self.query:
-                        username = 'thehackersclue@gmail.com'
-                        password = 'ebaaqoujplweiaoz'
-                        send_to_email = 'rakshitrakshit26@gmail.com'
-                        speak("okay sir,What is the subject for this email?")
-                        query = self.takeCommand().lower()
-                        subject = query
-                        speak("and sir, what is the message for this email?")
-                        query2 = self.takeCommand().lower()
-                        message = query2
-                        speak("sir please enter the correct path of the file into the shell")
-                        path = input("Enter the path of the file: ")
-
-                        speak("please wait,i am sending email now")
-
-                        msg = MIMEMultipart()
-                        msg['From'] = username
-                        msg['To'] = send_to_email
-                        msg['Subject'] = subject
-
-                        msg.attach(MIMEText(message, 'plain'))
-
-                        filename = os.path.basename(path)
-                        attachment = open(path, "rb")
-                        part = MIMEBase('application', 'octet-stream')
-                        part.set_payload((attachment).read())
-                        encoders.encode_base64(part)
-                        part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-
-                        msg.attach(part)
-
-                        server = smtplib.SMTP('smtp.gmail.com', 587)
-                        server.starttls()
-                        server.login(username, password)
-                        text = msg.as_string()
-                        server.sendmail(username, send_to_email, text)
-                        server.quit()       
-                        speak("Email has been sent to hacker")                                         
-                    else:
-                        username = 'thehackersclue@gmail.com'
-                        password = 'ebaaqoujplweiaoz'
-                        send_to_email = 'rakshitrakshit26@gmail.com'
-                        message = query2
-                        server = smtplib.SMTP('smtp.gmail.com', 587)
-                        server.starttls()
-                        server.login(username, password)
-                        server.sendmail(username, send_to_email,message)
-                        server.quit()       
-                        speak("Email has been sent to hacker")     
-
+          
             #Finding my location using Jarvis
 
                 elif'where i am' in self.query or 'where we are' in self.query:
@@ -504,7 +432,7 @@ class Mainthread(QThread):
                     speak(eval_binary_expr(*(my_string.split())))
                 
                 elif "temperature" in self.query:
-                    search = "temperature in Rajasthan,Bikaner"
+                    search = ""
                     url = f"https://www.google.com/search?q={search}"
                     r = requests.get(url)
                     data = BeautifulSoup(r.text,"html.parser")
@@ -519,9 +447,6 @@ class Mainthread(QThread):
                     assert len(how_to) == 1
                     how_to[0].print()
                     speak(how_to[0].summary)
-
-                elif"tell me something about puru" in self.query:
-                    speak("puru is very shy and introvert person")
                 
                 elif"how much power left"in self.query or"how much power we have"in self.query or"battery"in self.query:
                     battery=psutil.sensors_battery()
